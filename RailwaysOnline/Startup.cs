@@ -33,7 +33,7 @@ namespace RailwaysOnline
             services.AddDbContext<RailwaysDbContext>(options => options.UseSqlServer(
                 connectionString: Configuration.GetConnectionString("RailwaysOnlineConnection"))
                 );
-
+            services.AddScoped<IJourneyRepository, JourneyRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

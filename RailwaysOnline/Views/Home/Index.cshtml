@@ -4,52 +4,86 @@
     ViewBag.Title = "title";
     Layout = "_Layout";
 }
-<table class="table">
-    <thead>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FromCity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ToCity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DepartureTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ArrivalTime)
-        </th>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FromCity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ToCity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DepartureTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ArrivalTime)
-            </td>
-@*            <td>*@
-@*                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
-@*                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |*@
-@*                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
-@*            </td>*@
-        </tr>
-    }
-    </tbody>
-</table>
+<div class="row">
+    <div class="col-sm-5 jumbotron">
+        <p class="help-block">Find your journey!</p>
+        <form asp-action="Index" method="POST">
+            <div class="form-group">
+                <input type="text" name="from" class="form-control" placeholder="From">
+            </div>
+            <div class="form-group">
+                <input type="text" name="to" class="form-control" placeholder="To">
+            </div>
+            <div class="form-group">
+                <input type="date" name="date" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>
+        </form>
+
+    </div>
+    <div class="col-sm-7">
+        <h3 class="h3">
+            Trains about to leave
+        </h3>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FromCity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ToCity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DepartureTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ArrivalTime)
+                </th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            @if (Model.Count() == 0)
+            {
+                <tr>
+                    <td colspan="5" class="text-center">There are no results.</td>
+                </tr>
+            }
+            else
+            {
+                 foreach (var item in Model)
+                 {
+                     <tr>
+                         <td>
+                             @Html.DisplayFor(modelItem => item.Id)
+                         </td>
+                         <td>
+                             @Html.DisplayFor(modelItem => item.FromCity)
+                         </td>
+                         <td>
+                             @Html.DisplayFor(modelItem => item.ToCity)
+                         </td>
+                         <td>
+                             @Html.DisplayFor(modelItem => item.DepartureTime)
+                         </td>
+                         <td>
+                             @Html.DisplayFor(modelItem => item.ArrivalTime)
+                         </td>
+                         @*            <td>*@
+                         @*                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
+                         @*                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |*@
+                         @*                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                         @*            </td>*@
+                     </tr>
+                 }
+            }
+            
+            </tbody>
+        </table>
+    </div>
+</div>
 
