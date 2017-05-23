@@ -24,7 +24,9 @@ a {
     transition: 300ms;
     color:#fc7700;
 }
-
+#navigation {
+    margin-bottom: 90px;
+}
 #navigation .navbar {
     background:rgba(255, 255, 255, 0.952941);
     border-radius: 0;
@@ -69,5 +71,8 @@ a {
 #navigation .navbar-nav.navbar-right li a:hover {
     color: #fff;
     background-color: #fc7700;
+}
+#logo {
+    max-width: 30%;
 }
 
