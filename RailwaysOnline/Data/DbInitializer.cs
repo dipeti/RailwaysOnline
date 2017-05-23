@@ -20,7 +20,7 @@ namespace RailwaysOnline.Data
                 {
                     FromCity = Cities.Brussels,
                     ToCity = Cities.Amsterdam,
-                    ArrivalTime = new DateTime(2018, 01, 01, 8, 0, 0),
+                    ArrivalTime = new DateTime(2018, 01, 01, 11, 0, 0),
                     DepartureTime = new DateTime(2018, 01, 01, 10, 0, 0),
                     BusinessSeats = 20,
                     EconomySeats = 100
@@ -29,7 +29,7 @@ namespace RailwaysOnline.Data
                 {
                     FromCity = Cities.London,
                     ToCity = Cities.Amsterdam,
-                    ArrivalTime = new DateTime(2018, 01, 01, 8, 0, 0),
+                    ArrivalTime = new DateTime(2018, 01, 01, 12, 0, 0),
                     DepartureTime = new DateTime(2018, 01, 01, 9, 30, 0),
                     BusinessSeats = 20,
                     EconomySeats = 100
@@ -38,7 +38,7 @@ namespace RailwaysOnline.Data
                 {
                     FromCity = Cities.Paris,
                     ToCity = Cities.Brussels,
-                    ArrivalTime = new DateTime(2018, 01, 01, 8, 0, 0),
+                    ArrivalTime = new DateTime(2018, 01, 01, 12, 0, 0),
                     DepartureTime = new DateTime(2018, 01, 01, 11, 0, 0),
                     BusinessSeats = 20,
                     EconomySeats = 100
@@ -47,7 +47,7 @@ namespace RailwaysOnline.Data
                 {
                     FromCity = Cities.Brussels,
                     ToCity = Cities.Berlin,
-                    ArrivalTime = new DateTime(2018, 01, 01, 8, 0, 0),
+                    ArrivalTime = new DateTime(2018, 01, 01, 13, 0, 0),
                     DepartureTime = new DateTime(2018, 01, 01, 9, 0, 0),
                     BusinessSeats = 20,
                     EconomySeats = 100
