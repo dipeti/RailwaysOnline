@@ -1,0 +1,14 @@
+D:\asp\RailwaysOnline\RailwaysOnline.Tests\bin\Debug\netcoreapp1.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+D:\asp\RailwaysOnline\RailwaysOnline.Tests\bin\Debug\netcoreapp1.1\xunit.runner.utility.netstandard15.dll
+D:\asp\RailwaysOnline\RailwaysOnline.Tests\bin\Debug\netcoreapp1.1\xunit.runner.reporters.netstandard15.dll
+D:\asp\RailwaysOnline\RailwaysOnline.Tests\bin\Debug\netcoreapp1.1\RailwaysOnline.Tests.deps.json
+D:\asp\RailwaysOnline\RailwaysOnline.Tests\bin\Debug\netcoreapp1.1\RailwaysOnline.Tests.runtimeconfig.json
+D:\asp\RailwaysOnline\RailwaysOnline.Tests\bin\Debug\netcoreapp1.1\RailwaysOnline.Tests.runtimeconfig.dev.json
+D:\asp\RailwaysOnline\RailwaysOnline.Tests\bin\Debug\netcoreapp1.1\RailwaysOnline.Tests.dll
+D:\asp\RailwaysOnline\RailwaysOnline.Tests\obj\Debug\netcoreapp1.1\RailwaysOnline.Tests.csprojResolveAssemblyReference.cache
+D:\asp\RailwaysOnline\RailwaysOnline.Tests\obj\Debug\netcoreapp1.1\RailwaysOnline.Tests.AssemblyInfo.cs
+D:\asp\RailwaysOnline\RailwaysOnline.Tests\bin\Debug\netcoreapp1.1\RailwaysOnline.Tests.pdb
+D:\asp\RailwaysOnline\RailwaysOnline.Tests\obj\Debug\netcoreapp1.1\RailwaysOnline.Tests.dll
+D:\asp\RailwaysOnline\RailwaysOnline.Tests\obj\Debug\netcoreapp1.1\RailwaysOnline.Tests.pdb
+D:\asp\RailwaysOnline\RailwaysOnline.Tests\bin\Debug\netcoreapp1.1\RailwaysOnline.dll
+D:\asp\RailwaysOnline\RailwaysOnline.Tests\bin\Debug\netcoreapp1.1\RailwaysOnline.pdb
