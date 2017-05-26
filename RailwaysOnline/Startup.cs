@@ -30,6 +30,8 @@ namespace RailwaysOnline
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddMemoryCache();
+            services.AddSession();
             services.AddDbContext<RailwaysDbContext>(options => options.UseSqlServer(
                 connectionString: Configuration.GetConnectionString("RailwaysOnlineConnection"))
                 );
@@ -47,6 +49,7 @@ namespace RailwaysOnline
                 app.UseStatusCodePages();
             }
             app.UseStaticFiles();
+            app.UseSession();
             app.UseMvc(routeBuilder => routeBuilder.MapRoute(
                 name: "default",
                 template: "{controller=Home}/{action=Index}/{id?}"

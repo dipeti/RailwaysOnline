@@ -1,0 +1,36 @@
+﻿@model Cart
+
+@{
+    Layout = "_Layout";
+}
+
+<h2>Your cart</h2>
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th>Quantity</th>
+        <th>From</th>
+        <th class="text-right">To</th>
+        <th class="text-right">Departure</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var reservation in Model.Reservations)
+    {
+        <tr>
+            <td class="text-center">@reservation.Seats seat(s)</td>
+            <td class="text-left">@reservation.Journey.FromCity</td>
+            <td class="text-right">@reservation.Journey.ToCity</td>
+            <td class="text-right">@reservation.Journey.DepartureTime</td>
+        </tr>
+    }
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="3" class="text-right">Total:</td>
+        <td class="text-right">N/A</td>
+    </tr>
+    </tfoot>
+</table>
+
+<div class="text-center">     <a class="btn btn-primary" asp-action="Index" asp-controller="Home">Continue shopping</a> </div>

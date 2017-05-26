@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Journey>
+@foreach (var item in Model)
+{
+    
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FromCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ToCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartureTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArrivalTime)
+        </td>
+        <td>
+            <td>
+@*                <form class="cart-form" asp-action="AddToCart" asp-controller="Cart" method="post">*@
+@*                    <input type="hidden" name="id" value="@item.Id"/>*@
+                    <button class="btn bg-primary btn-xs" type="button" data-toggle="modal" data-target="#cart-form" data-obj='@Json.Serialize(item)'>Add to cart</button>
+                    <a class="btn bg-primary btn-xs" asp-action="Index" asp-controller="Cart">Details</a>
+@*                </form>*@
+            </td>
+        </td>
+    </tr>
+}

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using RailwaysOnline.Data;
+using RailwaysOnline.Models;
 
 namespace RailwaysOnline.Controllers
 {
@@ -18,16 +19,20 @@ namespace RailwaysOnline.Controllers
         {
             this.journeyRepository = journeyRepository;
         }
-        [HttpGet]
+        
         public ViewResult Index()
         {
-            return View(journeyRepository.LastFiveJourneys);
+            return View(new JourneyViewModel()
+            {
+                Journeys = journeyRepository.LastFiveJourneys,
+                Date = DateTime.Now,
+            });
         }
 
         [HttpPost]
-        public IActionResult Index(string from, string to, DateTime date)
+        public ViewResult Index(string from, string to, DateTime date)
         {
-            return View(journeyRepository.FindJourneysBy(from, to, date));
+            return View("JourneyResults",journeyRepository.FindJourneysBy(from, to, date));
         }
 
         public string Show()

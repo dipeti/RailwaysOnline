@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Journey>
+﻿@model JourneyViewModel
 
 @{
     ViewBag.Title = "title";
@@ -7,15 +7,18 @@
 <div class="row">
     <div class="col-sm-5 jumbotron">
         <p class="help-block">Find your journey!</p>
-        <form asp-action="Index" method="POST">
+        <form id="filter-form" asp-action="Index" method="POST">
             <div class="form-group">
-                <input type="text" name="from" class="form-control" placeholder="From">
+                <div><span asp-validation-for="From" class="text-danger"></span></div>
+                <input type="text" asp-for="From" class="form-control" placeholder="From">
             </div>
             <div class="form-group">
-                <input type="text" name="to" class="form-control" placeholder="To">
+                <div><span asp-validation-for="To" class="text-danger"></span></div>
+                <input type="text" asp-for="To" class="form-control" placeholder="To">
             </div>
             <div class="form-group">
-                <input type="date" name="date" class="form-control">
+                <div><span asp-validation-for="Date" class="text-danger"></span></div>
+                <input type="date" asp-for="Date" class="form-control">
             </div>
             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>
         </form>
@@ -29,61 +32,68 @@
             <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Id)
+                    @Html.DisplayNameFor(model => model.Journeys.GetEnumerator().Current.FromCity)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.FromCity)
+                    @Html.DisplayNameFor(model => model.Journeys.GetEnumerator().Current.ToCity)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ToCity)
+                    @Html.DisplayNameFor(model => model.Journeys.GetEnumerator().Current.DepartureTime)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.DepartureTime)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ArrivalTime)
+                    @Html.DisplayNameFor(model => model.Journeys.GetEnumerator().Current.ArrivalTime)
                 </th>
                 <th></th>
             </tr>
             </thead>
             <tbody>
-            @if (Model.Count() == 0)
+            @if (!Model.Journeys.Any())
             {
                 <tr>
                     <td colspan="5" class="text-center">There are no results.</td>
                 </tr>
             }
             else
-            {
-                 foreach (var item in Model)
-                 {
-                     <tr>
-                         <td>
-                             @Html.DisplayFor(modelItem => item.Id)
-                         </td>
-                         <td>
-                             @Html.DisplayFor(modelItem => item.FromCity)
-                         </td>
-                         <td>
-                             @Html.DisplayFor(modelItem => item.ToCity)
-                         </td>
-                         <td>
-                             @Html.DisplayFor(modelItem => item.DepartureTime)
-                         </td>
-                         <td>
-                             @Html.DisplayFor(modelItem => item.ArrivalTime)
-                         </td>
-                         @*            <td>*@
-                         @*                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
-                         @*                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |*@
-                         @*                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
-                         @*            </td>*@
-                     </tr>
-                 }
+            { 
+                @Html.Partial("JourneyResults", Model.Journeys)
             }
             
             </tbody>
         </table>
+        <!-- Modal -->
+        <div class="modal fade" id="cart-form" tabindex="-1" role="dialog" aria-labelledby="form-label">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="form-label">Add ticket(s) to cart</h4>
+ 
+                    </div>
+                    <form asp-action="AddToCart" asp-controller="Cart" method="post">
+                        <div class="modal-body">
+                            <h4 id="journeyLoc"></h4>
+                            <h4 id="journeyTime"></h4>
+                            <div class="form-group">
+                                <label>Class:</label>
+                                <select class="form-control" asp-items="@new SelectList(Enum.GetNames(typeof(Classes)))">
+                                    <option disabled selected value="">Select a Class</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Seats:</label>
+                                <input class="form-control" max="10" min="1" type="number" name="seats" value="1" />
+                            </div>
+                        </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <input type="hidden" id="journeyId" name="id" value="" />
+                        <button type="submit" class="btn btn-primary">Add to cart</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 
