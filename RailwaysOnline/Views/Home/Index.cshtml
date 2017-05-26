@@ -75,7 +75,7 @@
                             <h4 id="journeyTime"></h4>
                             <div class="form-group">
                                 <label>Class:</label>
-                                <select class="form-control" asp-items="@new SelectList(Enum.GetNames(typeof(Classes)))">
+                                <select class="form-control" name="classes" asp-items="@new SelectList(Enum.GetNames(typeof(Classes)))">
                                     <option disabled selected value="">Select a Class</option>
                                 </select>
                             </div>

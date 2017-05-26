@@ -20,7 +20,7 @@ namespace RailwaysOnline.Models
             }
             else
             {
-                reservation.Seats++;
+                reservation.Seats+=quantity;
                 reservations.Add(reservation);
             }
 

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -34,17 +35,18 @@ namespace RailwaysOnline.Controllers
         }
 
         [HttpPost]
-        public JsonResult AddToCart(int id)
+        public JsonResult AddToCart(int id, string classes, int seats)
         {
             Journey journey = journeyRepository.Journeys.FirstOrDefault(j => j.Id==id);
             if (null != journey)
             {
                 Cart cart = GetCart();
+                Classes journeyClasses = (Classes) Enum.Parse(typeof(Classes), classes);
                 cart.AddReservation(new Reservation
                 {
                     Journey = journey,
-                    Class = Classes.Economy
-                });
+                    Class = journeyClasses
+                }, seats);
                 SaveCart(cart);
                 return Json(journey);
             }
