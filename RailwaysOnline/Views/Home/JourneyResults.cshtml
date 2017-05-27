@@ -16,12 +16,14 @@
             @Html.DisplayFor(modelItem => item.ArrivalTime)
         </td>
         <td>
+            @item.Price.ToString("C0") | @item.PriceBusinessClass.ToString("C0")
+        </td>
+        <td>
             <td>
-@*                <form class="cart-form" asp-action="AddToCart" asp-controller="Cart" method="post">*@
-@*                    <input type="hidden" name="id" value="@item.Id"/>*@
-                    <button class="btn bg-primary btn-xs" type="button" data-toggle="modal" data-target="#cart-form" data-obj='@Json.Serialize(item)'>Add to cart</button>
-                    <a class="btn bg-primary btn-xs" asp-action="Index" asp-controller="Cart">Details</a>
-@*                </form>*@
+               
+                    <button class="btn bg-primary btn-xs" type="button" data-toggle="modal" data-target="#cart-modal" data-obj='@Json.Serialize(item)'>Add to cart</button>
+                    
+               
             </td>
         </td>
     </tr>

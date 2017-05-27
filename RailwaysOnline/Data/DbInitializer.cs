@@ -23,7 +23,8 @@ namespace RailwaysOnline.Data
                     ArrivalTime = new DateTime(2018, 01, 01, 11, 0, 0),
                     DepartureTime = new DateTime(2018, 01, 01, 10, 0, 0),
                     BusinessSeats = 20,
-                    EconomySeats = 100
+                    EconomySeats = 100,
+                    Price = 500
                 },
                 new Journey()
                 {
@@ -32,7 +33,8 @@ namespace RailwaysOnline.Data
                     ArrivalTime = new DateTime(2018, 01, 01, 12, 0, 0),
                     DepartureTime = new DateTime(2018, 01, 01, 9, 30, 0),
                     BusinessSeats = 20,
-                    EconomySeats = 100
+                    EconomySeats = 100,
+                    Price = 600
                 },
                 new Journey()
                 {
@@ -41,7 +43,8 @@ namespace RailwaysOnline.Data
                     ArrivalTime = new DateTime(2018, 01, 01, 12, 0, 0),
                     DepartureTime = new DateTime(2018, 01, 01, 11, 0, 0),
                     BusinessSeats = 20,
-                    EconomySeats = 100
+                    EconomySeats = 100,
+                    Price = 400
                 },
                 new Journey()
                 {
@@ -50,7 +53,8 @@ namespace RailwaysOnline.Data
                     ArrivalTime = new DateTime(2018, 01, 01, 13, 0, 0),
                     DepartureTime = new DateTime(2018, 01, 01, 9, 0, 0),
                     BusinessSeats = 20,
-                    EconomySeats = 100
+                    EconomySeats = 100,
+                    Price = 800
                 },
             };
             foreach (Journey journey in journeys)

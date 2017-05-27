@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using RailwaysOnline.Data;
 using RailwaysOnline.Infrastructure;
 using RailwaysOnline.Models;
@@ -12,8 +14,9 @@ namespace RailwaysOnline.Controllers
 {
     public class CartController : Controller
     {
-        private const string SESSION_CART = "Cart"; 
+        private const string SESSION_CART = "Cart";
         private readonly IJourneyRepository journeyRepository;
+
         public CartController(IJourneyRepository journeyRepository)
         {
             this.journeyRepository = journeyRepository;
@@ -21,7 +24,11 @@ namespace RailwaysOnline.Controllers
 
         public ViewResult Index()
         {
-            return View(GetCart());
+            return View(new CartViewModel()
+            {
+                Cart = GetCart(),
+                ReturnUrl = "/",
+            });
         }
 
         private Cart GetCart()
@@ -31,26 +38,37 @@ namespace RailwaysOnline.Controllers
 
         private void SaveCart(Cart cart)
         {
-            HttpContext.Session.SetJson(SESSION_CART,cart);
+            HttpContext.Session.SetJson(SESSION_CART, cart);
         }
 
         [HttpPost]
-        public JsonResult AddToCart(int id, string classes, int seats)
+        public JsonResult AddToCart(int id, Classes selectedClass, int seats)
         {
-            Journey journey = journeyRepository.Journeys.FirstOrDefault(j => j.Id==id);
+            Journey journey = journeyRepository.Journeys.FirstOrDefault(j => j.Id == id);
+            
             if (null != journey)
             {
+                string validationMsg = journey.ValidateJourney(selectedClass, seats);
+                if (!String.IsNullOrEmpty(validationMsg))
+                {
+                    return Json(new {Result = false, Message = validationMsg });
+                }
                 Cart cart = GetCart();
-                Classes journeyClasses = (Classes) Enum.Parse(typeof(Classes), classes);
-                cart.AddReservation(new Reservation
+                Reservation reservation = new Reservation
                 {
                     Journey = journey,
-                    Class = journeyClasses
-                }, seats);
+                    Class = selectedClass
+                };
+                reservation.AddSeats(seats);
+                journeyRepository.Flush();
+                cart.AddReservation(reservation, seats);
                 SaveCart(cart);
                 return Json(journey);
+                
             }
             return Json(null);
         }
+
+        
     }
 }

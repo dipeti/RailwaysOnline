@@ -5,14 +5,17 @@
 });
 
 var showModal = function() {
-    $('#cart-form').on('show.bs.modal',
+    $('#cart-modal').on('show.bs.modal',
         function(event) {
-            var button = $(event.relatedTarget) // Button that triggered the modal
+            var button = $(event.relatedTarget); // Button that triggered the modal
             var journey = button.data('obj');
             var modal = $(this);
             modal.find('#journeyId').val(journey.id);
             modal.find('#journeyLoc').text('From ' + journey.fromCity + ' - To ' + journey.toCity);
             modal.find('#journeyTime').text('Departs at:' + toTime(journey.departureTime) + ' - Arrives at: ' + toTime(journey.arrivalTime));
+            modal.find('select').prop('selectedIndex', 0);
+            modal.find('input[type=number]').val(1);
+            modal.find('.text-danger span').text('');
         });
 };
 var toTime = function(time) {
@@ -34,9 +37,7 @@ var filterJourneyAsync = function() {
                             function() {
                                 $('table tbody').html(data);
                             });
-                        $('table').fadeIn('fast', function(){
-                                addToCartAsync();
-                            });
+                        $('table').fadeIn('fast');
                     });
             }
             
@@ -44,18 +45,27 @@ var filterJourneyAsync = function() {
     
 };
 var addToCartAsync = function () {
-    $('#cart-form form').on('submit',
+    $('#cart-modal form').on('submit',
         function (e) {
-            console.log($(this));
+            var button = $(this).find('button[type="submit"]');            
             e.preventDefault();
+            if ($(this).valid()) {
+                button.button('loading');
                 $.post($(this).attr('action'),
                     $(this).serialize(),
                     function (data) {
+                        console.log(data);
                         if (null === data || data === undefined) {
                             alert('error!');
+                        } else if (false === data.result) {
+                            alert(data.message);
                         } else {
-                            alert(data + 'successfully added to the cart!');
+                            $('#cart-modal').modal('hide');
+                            $('.alert').slideDown().delay(3000).slideUp();
                         }
+                        button.button('reset');
+
                     });
+            }
         });
 };

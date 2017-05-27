@@ -5,6 +5,9 @@
     Layout = "_Layout";
 }
 <div class="row">
+    <div class="alert alert-success" style="display: none;">
+        <strong>Ticket(s) added to the cart!</strong>
+    </div>
     <div class="col-sm-5 jumbotron">
         <p class="help-block">Find your journey!</p>
         <form id="filter-form" asp-action="Index" method="POST">
@@ -43,6 +46,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Journeys.GetEnumerator().Current.ArrivalTime)
                 </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Journeys.GetEnumerator().Current.Price) (Economy/Business)
+                </th>
                 <th></th>
             </tr>
             </thead>
@@ -54,20 +60,20 @@
                 </tr>
             }
             else
-            { 
+            {
                 @Html.Partial("JourneyResults", Model.Journeys)
             }
-            
+
             </tbody>
         </table>
         <!-- Modal -->
-        <div class="modal fade" id="cart-form" tabindex="-1" role="dialog" aria-labelledby="form-label">
+        <div class="modal fade" id="cart-modal" tabindex="-1" role="dialog" aria-labelledby="form-label">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="form-label">Add ticket(s) to cart</h4>
- 
+
                     </div>
                     <form asp-action="AddToCart" asp-controller="Cart" method="post">
                         <div class="modal-body">
@@ -75,20 +81,22 @@
                             <h4 id="journeyTime"></h4>
                             <div class="form-group">
                                 <label>Class:</label>
-                                <select class="form-control" name="classes" asp-items="@new SelectList(Enum.GetNames(typeof(Classes)))">
-                                    <option disabled selected value="">Select a Class</option>
+                                <div><span asp-validation-for="SelectedClass" class="text-danger"></span></div>
+                                <select class="form-control" asp-for="SelectedClass" asp-items="@new SelectList(Enum.GetNames(typeof(Classes)))">
+                                    <option disabled>Select a Class</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Seats:</label>
-                                <input class="form-control" max="10" min="1" type="number" name="seats" value="1" />
+                                <div><span asp-validation-for="Seats" class="text-danger"></span></div>
+                                <input class="form-control" asp-for="Seats" value="1"/>
                             </div>
                         </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <input type="hidden" id="journeyId" name="id" value="" />
-                        <button type="submit" class="btn btn-primary">Add to cart</button>
-                    </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <input type="hidden" id="journeyId" name="id" value=""/>
+                            <button type="submit" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off" >Add to cart</button>
+                        </div>
                     </form>
                 </div>
             </div>

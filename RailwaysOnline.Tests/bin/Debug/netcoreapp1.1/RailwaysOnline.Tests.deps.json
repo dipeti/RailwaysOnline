@@ -1428,6 +1428,7 @@
         "dependencies": {
           "Microsoft.ApplicationInsights.AspNetCore": "2.0.0",
           "Microsoft.AspNetCore": "1.1.2",
+          "Microsoft.AspNetCore.Http.Extensions": "1.1.2",
           "Microsoft.AspNetCore.Mvc": "1.1.2",
           "Microsoft.AspNetCore.Session": "1.1.2",
           "Microsoft.AspNetCore.StaticFiles": "1.1.2",

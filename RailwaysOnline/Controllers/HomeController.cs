@@ -35,9 +35,8 @@ namespace RailwaysOnline.Controllers
             return View("JourneyResults",journeyRepository.FindJourneysBy(from, to, date));
         }
 
-        public string Show()
-        {
-            return "Results...";
-        }
+
+        
+
     }
 }

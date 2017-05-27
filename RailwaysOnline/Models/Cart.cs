@@ -11,7 +11,7 @@ namespace RailwaysOnline.Models
 
         public virtual void AddReservation(Reservation reservation, int quantity = 1)
         {
-            Reservation itemReservation = reservations.FirstOrDefault(r => r.Journey.Id == reservation.Journey.Id);
+            Reservation itemReservation = reservations.FirstOrDefault(r => r.Journey.Id == reservation.Journey.Id && r.Class == reservation.Class);
             
             // Already in the cart
             if (null != itemReservation)
@@ -30,5 +30,7 @@ namespace RailwaysOnline.Models
             => reservations.RemoveAll(r => r.Id == reservation.Id);
 
         public IEnumerable<Reservation> Reservations => reservations;
+
+        public decimal TotalCosts => reservations.Sum(r => r.Price);
     }
 }
