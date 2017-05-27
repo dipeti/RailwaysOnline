@@ -28,5 +28,16 @@ namespace RailwaysOnline.Models
                 Journey.BusinessSeats -= quantity;
             }
         }
+        public void RemoveSeats()
+        {
+            if (Class == Classes.Economy)
+            {
+                Journey.EconomySeats += Seats;
+            }
+            else if (Class == Classes.Business)
+            {
+                Journey.BusinessSeats += Seats;
+            }
+        }
     }
 }

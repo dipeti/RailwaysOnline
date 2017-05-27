@@ -56,6 +56,7 @@ namespace RailwaysOnline.Controllers
                 Cart cart = GetCart();
                 Reservation reservation = new Reservation
                 {
+                    Id = cart.Reservations.Count(),
                     Journey = journey,
                     Class = selectedClass
                 };
@@ -69,6 +70,21 @@ namespace RailwaysOnline.Controllers
             return Json(null);
         }
 
-        
+
+        public IActionResult RemoveFromCart(int id, string returnUrl)
+        {
+            Cart cart = GetCart();
+            Reservation reservation = cart.Reservations.FirstOrDefault(r => r.Id == id);
+            if (null != reservation)
+            {
+                cart.RemoveReservation(reservation);
+                journeyRepository.Persist(reservation.Journey);
+                reservation.RemoveSeats();
+                
+                journeyRepository.Flush();
+                SaveCart(cart);
+            }
+            return RedirectToAction("Index", new {ReturnUrl = returnUrl});
+        }
     }
 }

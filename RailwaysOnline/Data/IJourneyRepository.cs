@@ -12,5 +12,6 @@ namespace RailwaysOnline.Data
         IEnumerable<Journey> LastFiveJourneys { get; }
         IEnumerable<Journey> FindJourneysBy(string from, string to, DateTime date);
         void Flush();
+        void Persist(Journey journey);
     }
 }

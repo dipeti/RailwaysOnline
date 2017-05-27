@@ -29,5 +29,10 @@ namespace RailwaysOnline.Data
         {
             context.SaveChanges();
         }
+
+        public void Persist(Journey journey)
+        {
+            context.Attach(journey);
+        }
     }
 }

@@ -28,7 +28,7 @@
             <td class="text-right">@reservation.Price.ToString("C0")</td>
             <td>
                 <form asp-action="RemoveFromCart" method="post">
-                    <input type="hidden" name="ProductID"
+                    <input type="hidden" name="id"
                            value="@reservation.Id" />
                     <input type="hidden" name="returnUrl"
                            value="@Model.ReturnUrl" />
