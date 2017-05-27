@@ -9,6 +9,7 @@
     <script asp-src-include="lib/jquery-validation-unobtrusive/**/*.min.js"></script>
     <link href="lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link href="lib/fontawesome/css/font-awesome.min.css" rel="stylesheet" />
     <link href="app/css/main.css" rel="stylesheet" />
     <script src="app/js/main.js"></script>
 </head>
@@ -27,6 +28,9 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#navigation">Home</a></li>
                     <li><a asp-action="Index" asp-controller="Cart">Go to cart</a></li>
+                    <li id="cart-summary">
+                        @await Component.InvokeAsync("CartSummary")
+                   </li>  
                 </ul>
             </div> 
         </div> 

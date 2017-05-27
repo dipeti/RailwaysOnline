@@ -61,6 +61,7 @@ var addToCartAsync = function () {
                             alert(data.message);
                         } else {
                             $('#cart-modal').modal('hide');
+                            $('#cart-summary').html(data);
                             $('.alert').slideDown().delay(3000).slideUp();
                         }
                         button.button('reset');

@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using RailwaysOnline.Components;
 using RailwaysOnline.Data;
 using RailwaysOnline.Infrastructure;
 using RailwaysOnline.Models;
@@ -14,7 +15,7 @@ namespace RailwaysOnline.Controllers
 {
     public class CartController : Controller
     {
-        private const string SESSION_CART = "Cart";
+        
         private readonly IJourneyRepository journeyRepository;
 
         public CartController(IJourneyRepository journeyRepository)
@@ -33,16 +34,16 @@ namespace RailwaysOnline.Controllers
 
         private Cart GetCart()
         {
-            return HttpContext.Session.GetJson<Cart>(SESSION_CART) ?? new Cart();
+            return HttpContext.Session.GetJson<Cart>(Cart.SESSION_CART) ?? new Cart();
         }
 
         private void SaveCart(Cart cart)
         {
-            HttpContext.Session.SetJson(SESSION_CART, cart);
+            HttpContext.Session.SetJson(Cart.SESSION_CART, cart);
         }
 
         [HttpPost]
-        public JsonResult AddToCart(int id, Classes selectedClass, int seats)
+        public IActionResult AddToCart(int id, Classes selectedClass, int seats)
         {
             Journey journey = journeyRepository.Journeys.FirstOrDefault(j => j.Id == id);
             
@@ -64,8 +65,10 @@ namespace RailwaysOnline.Controllers
                 journeyRepository.Flush();
                 cart.AddReservation(reservation, seats);
                 SaveCart(cart);
-                return Json(journey);
                 
+                return ViewComponent(typeof(CartSummaryViewComponent), cart);
+                
+
             }
             return Json(null);
         }

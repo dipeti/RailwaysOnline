@@ -1,0 +1,15 @@
+﻿@model Cart
+
+<div class="pull-right">
+    @if (Model.Reservations.Count() > 0)
+    {
+        <small class="navbar-text">
+            <b>Your cart:</b>
+            @Model.Reservations.Count() item(s)
+            @Model.TotalCosts.ToString("c")
+        </small>
+    }
+@*    <a class="btn btn-sm btn-default" asp-controller="Cart" asp-action="Index" >*@
+@*        <i class="fa fa-shopping-cart"></i>*@
+@*    </a>*@
+</div>

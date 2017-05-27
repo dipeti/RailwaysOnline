@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using RailwaysOnline.Data;
+using RailwaysOnline.Models;
 
 namespace RailwaysOnline
 {
@@ -36,6 +37,7 @@ namespace RailwaysOnline
                 connectionString: Configuration.GetConnectionString("RailwaysOnlineConnection"))
                 );
             services.AddScoped<IJourneyRepository, JourneyRepository>();
+            services.AddScoped(SessionCart.GetCart);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

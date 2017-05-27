@@ -7,6 +7,7 @@ namespace RailwaysOnline.Models
 {
     public class Cart
     {
+        public const string SESSION_CART = "Cart";
         private List<Reservation> reservations = new List<Reservation>();
 
         public virtual void AddReservation(Reservation reservation, int quantity = 1)

@@ -15,7 +15,8 @@ namespace RailwaysOnline.Models
         public Journey Journey { get; set; }
         public Classes Class { get; set; }
         public int Seats { get; set; }
-        public decimal Price => Journey.Price * Seats;
+
+        public decimal Price => Class == Classes.Economy ? Journey.Price * Seats : Journey.PriceBusinessClass * Seats;
 
         public void AddSeats(int quantity)
         {
