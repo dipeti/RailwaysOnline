@@ -14,53 +14,236 @@ namespace RailwaysOnline.Data
             {
                 return; // DB has already been seeded;
             }
-            var journeys = new Journey[]
+            Random r = new Random();
+            DateTime refDateTime = DateTime.Now;
+            for (int i = 0; i < 365; i++)
             {
-                new Journey()
+                refDateTime = refDateTime.AddDays(1);
+                var journeys = new Journey[]
                 {
-                    FromCity = Cities.Brussels,
-                    ToCity = Cities.Amsterdam,
-                    ArrivalTime = new DateTime(2018, 01, 01, 11, 0, 0),
-                    DepartureTime = new DateTime(2018, 01, 01, 10, 0, 0),
-                    BusinessSeats = 20,
-                    EconomySeats = 100,
-                    Price = 500
-                },
-                new Journey()
+                    // AMSTERDAM
+                    new Journey
+                    {
+                        DepartureTime = refDateTime,
+                        ArrivalTime = refDateTime.AddMinutes(r.Next(20, 480)),
+                        BusinessSeats = r.Next(0, 20),
+                        EconomySeats = r.Next(20, 100),
+                        FromCity = Cities.Amsterdam,
+                        ToCity = Cities.Berlin,
+                        Price = r.Next(300, 800)
+                    },
+                    new Journey
+                    {
+                        DepartureTime = refDateTime,
+                        ArrivalTime = refDateTime.AddMinutes(r.Next(20, 480)),
+                        BusinessSeats = r.Next(0, 20),
+                        EconomySeats = r.Next(20, 100),
+                        FromCity = Cities.Amsterdam,
+                        ToCity = Cities.Brussels,
+                        Price = r.Next(300, 800)
+                    },
+                    new Journey
+                    {
+                        DepartureTime = refDateTime,
+                        ArrivalTime = refDateTime.AddMinutes(r.Next(20, 480)),
+                        BusinessSeats = r.Next(0, 20),
+                        EconomySeats = r.Next(20, 100),
+                        FromCity = Cities.Amsterdam,
+                        ToCity = Cities.London,
+                        Price = r.Next(300, 800)
+                    },
+                    new Journey
+                    {
+                        DepartureTime = refDateTime,
+                        ArrivalTime = refDateTime.AddMinutes(r.Next(20, 480)),
+                        BusinessSeats = r.Next(0, 20),
+                        EconomySeats = r.Next(20, 100),
+                        FromCity = Cities.Amsterdam,
+                        ToCity = Cities.Berlin,
+                        Price = r.Next(300, 800)
+                    },
+                    new Journey
+                    {
+                        DepartureTime = refDateTime,
+                        ArrivalTime = refDateTime.AddMinutes(r.Next(20, 480)),
+                        BusinessSeats = r.Next(0, 20),
+                        EconomySeats = r.Next(20, 100),
+                        FromCity = Cities.Amsterdam,
+                        ToCity = Cities.Paris,
+                        Price = r.Next(300, 800)
+                    },
+                    // BRUSSELS
+                    new Journey
+                    {
+                        DepartureTime = refDateTime,
+                        ArrivalTime = refDateTime.AddMinutes(r.Next(20, 480)),
+                        BusinessSeats = r.Next(0, 20),
+                        EconomySeats = r.Next(20, 100),
+                        FromCity = Cities.Brussels,
+                        ToCity = Cities.Berlin,
+                        Price = r.Next(300, 800)
+                    },
+                    new Journey
+                    {
+                        DepartureTime = refDateTime,
+                        ArrivalTime = refDateTime.AddMinutes(r.Next(20, 480)),
+                        BusinessSeats = r.Next(0, 20),
+                        EconomySeats = r.Next(20, 100),
+                        FromCity = Cities.Brussels,
+                        ToCity = Cities.London,
+                        Price = r.Next(300, 800)
+                    },
+                    new Journey
+                    {
+                        DepartureTime = refDateTime,
+                        ArrivalTime = refDateTime.AddMinutes(r.Next(20, 480)),
+                        BusinessSeats = r.Next(0, 20),
+                        EconomySeats = r.Next(20, 100),
+                        FromCity = Cities.Brussels,
+                        ToCity = Cities.Berlin,
+                        Price = r.Next(300, 800)
+                    },
+                    new Journey
+                    {
+                        DepartureTime = refDateTime,
+                        ArrivalTime = refDateTime.AddMinutes(r.Next(20, 480)),
+                        BusinessSeats = r.Next(0, 20),
+                        EconomySeats = r.Next(20, 100),
+                        FromCity = Cities.Brussels,
+                        ToCity = Cities.Paris,
+                        Price = r.Next(300, 800)
+                    },
+                    // BERLIN
+                    new Journey
+                    {
+                        DepartureTime = refDateTime,
+                        ArrivalTime = refDateTime.AddMinutes(r.Next(20, 480)),
+                        BusinessSeats = r.Next(0, 20),
+                        EconomySeats = r.Next(20, 100),
+                        FromCity = Cities.Berlin,
+                        ToCity = Cities.Amsterdam,
+                        Price = r.Next(300, 800)
+                    },
+                    new Journey
+                    {
+                        DepartureTime = refDateTime,
+                        ArrivalTime = refDateTime.AddMinutes(r.Next(20, 480)),
+                        BusinessSeats = r.Next(0, 20),
+                        EconomySeats = r.Next(20, 100),
+                        FromCity = Cities.Berlin,
+                        ToCity = Cities.Brussels,
+                        Price = r.Next(300, 800)
+                    },
+                    new Journey
+                    {
+                        DepartureTime = refDateTime,
+                        ArrivalTime = refDateTime.AddMinutes(r.Next(20, 480)),
+                        BusinessSeats = r.Next(0, 20),
+                        EconomySeats = r.Next(20, 100),
+                        FromCity = Cities.Berlin,
+                        ToCity = Cities.London,
+                        Price = r.Next(300, 800)
+                    },
+                    new Journey
+                    {
+                        DepartureTime = refDateTime,
+                        ArrivalTime = refDateTime.AddMinutes(r.Next(20, 480)),
+                        BusinessSeats = r.Next(0, 20),
+                        EconomySeats = r.Next(20, 100),
+                        FromCity = Cities.Berlin,
+                        ToCity = Cities.Paris,
+                        Price = r.Next(300, 800)
+                    },
+                    // LONDON
+                    new Journey
+                    {
+                        DepartureTime = refDateTime,
+                        ArrivalTime = refDateTime.AddMinutes(r.Next(20, 480)),
+                        BusinessSeats = r.Next(0, 20),
+                        EconomySeats = r.Next(20, 100),
+                        FromCity = Cities.London,
+                        ToCity = Cities.Amsterdam,
+                        Price = r.Next(300, 800)
+                    },
+                    new Journey
+                    {
+                        DepartureTime = refDateTime,
+                        ArrivalTime = refDateTime.AddMinutes(r.Next(20, 480)),
+                        BusinessSeats = r.Next(0, 20),
+                        EconomySeats = r.Next(20, 100),
+                        FromCity = Cities.London,
+                        ToCity = Cities.Berlin,
+                        Price = r.Next(300, 800)
+                    },
+                    new Journey
+                    {
+                        DepartureTime = refDateTime,
+                        ArrivalTime = refDateTime.AddMinutes(r.Next(20, 480)),
+                        BusinessSeats = r.Next(0, 20),
+                        EconomySeats = r.Next(20, 100),
+                        FromCity = Cities.London,
+                        ToCity = Cities.Brussels,
+                        Price = r.Next(300, 800)
+                    },
+                    new Journey
+                    {
+                        DepartureTime = refDateTime,
+                        ArrivalTime = refDateTime.AddMinutes(r.Next(20, 480)),
+                        BusinessSeats = r.Next(0, 20),
+                        EconomySeats = r.Next(20, 100),
+                        FromCity = Cities.Brussels,
+                        ToCity = Cities.Paris,
+                        Price = r.Next(300, 800)
+                    },
+                    // PARIS
+                    new Journey
+                    {
+                        DepartureTime = refDateTime,
+                        ArrivalTime = refDateTime.AddMinutes(r.Next(20, 480)),
+                        BusinessSeats = r.Next(0, 20),
+                        EconomySeats = r.Next(20, 100),
+                        FromCity = Cities.Paris,
+                        ToCity = Cities.Amsterdam,
+                        Price = r.Next(300, 800)
+                    },
+                    new Journey
+                    {
+                        DepartureTime = refDateTime,
+                        ArrivalTime = refDateTime.AddMinutes(r.Next(20, 480)),
+                        BusinessSeats = r.Next(0, 20),
+                        EconomySeats = r.Next(20, 100),
+                        FromCity = Cities.Paris,
+                        ToCity = Cities.Berlin,
+                        Price = r.Next(300, 800)
+                    },
+                    new Journey
+                    {
+                        DepartureTime = refDateTime,
+                        ArrivalTime = refDateTime.AddMinutes(r.Next(20, 480)),
+                        BusinessSeats = r.Next(0, 20),
+                        EconomySeats = r.Next(20, 100),
+                        FromCity = Cities.Paris,
+                        ToCity = Cities.Brussels,
+                        Price = r.Next(300, 800)
+                    },
+                    new Journey
+                    {
+                        DepartureTime = refDateTime,
+                        ArrivalTime = refDateTime.AddMinutes(r.Next(20, 480)),
+                        BusinessSeats = r.Next(0, 20),
+                        EconomySeats = r.Next(20, 100),
+                        FromCity = Cities.Paris,
+                        ToCity = Cities.London,
+                        Price = r.Next(300, 800)
+                    },
+                    
+                };
+                foreach (Journey journey in journeys)
                 {
-                    FromCity = Cities.London,
-                    ToCity = Cities.Amsterdam,
-                    ArrivalTime = new DateTime(2018, 01, 01, 12, 0, 0),
-                    DepartureTime = new DateTime(2018, 01, 01, 9, 30, 0),
-                    BusinessSeats = 20,
-                    EconomySeats = 100,
-                    Price = 600
-                },
-                new Journey()
-                {
-                    FromCity = Cities.Paris,
-                    ToCity = Cities.Brussels,
-                    ArrivalTime = new DateTime(2018, 01, 01, 12, 0, 0),
-                    DepartureTime = new DateTime(2018, 01, 01, 11, 0, 0),
-                    BusinessSeats = 20,
-                    EconomySeats = 100,
-                    Price = 400
-                },
-                new Journey()
-                {
-                    FromCity = Cities.Brussels,
-                    ToCity = Cities.Berlin,
-                    ArrivalTime = new DateTime(2018, 01, 01, 13, 0, 0),
-                    DepartureTime = new DateTime(2018, 01, 01, 9, 0, 0),
-                    BusinessSeats = 20,
-                    EconomySeats = 100,
-                    Price = 800
-                },
-            };
-            foreach (Journey journey in journeys)
-            {
-                context.Add(journey);
+                    context.Add(journey);
+                }
             }
+            
             context.SaveChanges();
         }
     }

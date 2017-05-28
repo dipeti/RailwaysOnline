@@ -9,7 +9,7 @@ namespace RailwaysOnline.Components
 {
     public class CartSummaryViewComponent : ViewComponent
     {
-        private Cart cart;
+        private Cart cart; 
         public CartSummaryViewComponent(Cart cartService)
         {
             cart = cartService;

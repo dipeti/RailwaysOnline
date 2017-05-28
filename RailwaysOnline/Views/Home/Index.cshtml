@@ -53,16 +53,10 @@
             </tr>
             </thead>
             <tbody>
-            @if (!Model.Journeys.Any())
-            {
-                <tr>
-                    <td colspan="5" class="text-center">There are no results.</td>
-                </tr>
-            }
-            else
-            {
+            
+            
                 @Html.Partial("JourneyResults", Model.Journeys)
-            }
+            
 
             </tbody>
         </table>

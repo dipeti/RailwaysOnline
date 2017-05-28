@@ -1,27 +1,34 @@
 ﻿@model IEnumerable<Journey>
-@foreach (var item in Model)
+@if (!Model.Any())
 {
-    
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FromCity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ToCity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DepartureTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ArrivalTime)
-        </td>
-        <td>
-            @item.Price.ToString("C0") | @item.PriceBusinessClass.ToString("C0")
-        </td>
-        <td>
-            <td>
-                    <button class="btn bg-primary btn-xs" type="button" data-toggle="modal" data-target="#cart-modal" data-obj='@Json.Serialize(item)'>Add to cart</button>
-            </td>
-        </td>
+        <td colspan="5" class="text-center">There are no results.</td>
     </tr>
+} else { 
+    foreach (var item in Model)
+    {
+    
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FromCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartureTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArrivalTime)
+            </td>
+            <td>
+                @item.Price.ToString("C0") | @item.PriceBusinessClass.ToString("C0")
+            </td>
+            <td>
+                <td>
+                        <button class="btn bg-primary btn-xs" type="button" data-toggle="modal" data-target="#cart-modal" data-obj='@Json.Serialize(item)'>Add to cart</button>
+                </td>
+            </td>
+        </tr>
+    }
 }

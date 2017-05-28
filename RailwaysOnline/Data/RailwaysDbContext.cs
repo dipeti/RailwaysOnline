@@ -15,5 +15,6 @@ namespace RailwaysOnline.Data
         }
 
         public DbSet<Journey> Journeys { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
     }
 }

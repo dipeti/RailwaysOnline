@@ -34,5 +34,10 @@ namespace RailwaysOnline.Models
             Session.SetJson(SESSION_CART, this);
         }
 
+        public override void Clear()
+        {
+            base.Clear();
+            Session.SetJson(SESSION_CART,this);
+        }
     }
 }

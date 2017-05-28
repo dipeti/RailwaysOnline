@@ -33,5 +33,8 @@ namespace RailwaysOnline.Models
         public IEnumerable<Reservation> Reservations => reservations;
 
         public decimal TotalCosts => reservations.Sum(r => r.Price);
+
+        public virtual void Clear() => reservations.Clear();
+        
     }
 }

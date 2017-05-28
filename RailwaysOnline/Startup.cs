@@ -37,6 +37,7 @@ namespace RailwaysOnline
                 connectionString: Configuration.GetConnectionString("RailwaysOnlineConnection"))
                 );
             services.AddScoped<IJourneyRepository, JourneyRepository>();
+            services.AddScoped<IReservationRepository, ReservationRepository>();
             services.AddScoped(SessionCart.GetCart);
         }
 
