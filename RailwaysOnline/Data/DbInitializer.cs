@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using RailwaysOnline.Models;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace RailwaysOnline.Data
 {
     public static class DbInitializer
     {
-        public static void EnsurePopulated(RailwaysDbContext context)
+        public static void EnsureJourneyPopulated(RailwaysDbContext context)
         {
             if (context.Journeys.Any())
             {
@@ -191,7 +195,7 @@ namespace RailwaysOnline.Data
                         ArrivalTime = refDateTime.AddMinutes(r.Next(20, 480)),
                         BusinessSeats = r.Next(0, 20),
                         EconomySeats = r.Next(20, 100),
-                        FromCity = Cities.Brussels,
+                        FromCity = Cities.London,
                         ToCity = Cities.Paris,
                         Price = r.Next(300, 800)
                     },
@@ -236,15 +240,30 @@ namespace RailwaysOnline.Data
                         ToCity = Cities.London,
                         Price = r.Next(300, 800)
                     },
-                    
+
                 };
                 foreach (Journey journey in journeys)
                 {
                     context.Add(journey);
                 }
             }
-            
+
             context.SaveChanges();
+        }
+
+        private const string ADMIN_USER = "admin";
+        private const string ADMIN_PASSWORD = "Secret123$";
+
+        public static async void EnsureUsersPopulated(IApplicationBuilder app)
+        {
+            UserManager<User> userManager =
+                app.ApplicationServices.GetRequiredService<UserManager<User>>();
+            User user = await userManager.FindByIdAsync(ADMIN_USER);
+            if (user == null)
+            {
+                user = new User("Admin");
+                await userManager.CreateAsync(user, ADMIN_PASSWORD);
+            }
         }
     }
 }

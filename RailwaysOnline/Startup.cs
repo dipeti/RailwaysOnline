@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,9 +37,11 @@ namespace RailwaysOnline
             services.AddDbContext<RailwaysDbContext>(options => options.UseSqlServer(
                 connectionString: Configuration.GetConnectionString("RailwaysOnlineConnection"))
                 );
+            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<RailwaysDbContext>().AddDefaultTokenProviders();
             services.AddScoped<IJourneyRepository, JourneyRepository>();
             services.AddScoped<IReservationRepository, ReservationRepository>();
             services.AddScoped(SessionCart.GetCart);
+            services.AddScoped<IEmailService, EmailService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,11 +56,15 @@ namespace RailwaysOnline
             }
             app.UseStaticFiles();
             app.UseSession();
+            app.UseIdentity();
             app.UseMvc(routeBuilder => routeBuilder.MapRoute(
                 name: "default",
                 template: "{controller=Home}/{action=Index}/{id?}"
             ));
-            DbInitializer.EnsurePopulated(context);
+            DbInitializer.EnsureJourneyPopulated(context);
+            DbInitializer.EnsureUsersPopulated(app);
         }
     }
+
+    
 }

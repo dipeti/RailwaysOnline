@@ -16,7 +16,7 @@ namespace RailwaysOnline.Data
             this.context = context;
         }
 
-        public IEnumerable<Reservation> Reservations => context.Reservations.Include(r => r.Journey);
+        public IEnumerable<Reservation> Reservations => context.Reservations.Include(r => r.Journey).Include(r =>r.User);
         public void SaveReservation(Reservation reservation)
         {
 //            if (reservation.Id == 0)

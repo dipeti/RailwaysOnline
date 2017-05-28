@@ -9,9 +9,10 @@ using RailwaysOnline.Models;
 namespace RailwaysOnline.Migrations
 {
     [DbContext(typeof(RailwaysDbContext))]
-    partial class RailwaysDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170528165743_userwithreservations")]
+    partial class userwithreservations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")

@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using RailwaysOnline.Models;
 
 namespace RailwaysOnline.Data
 {
-    public class RailwaysDbContext : DbContext
+    public class RailwaysDbContext : IdentityDbContext<User>
     {
-        public RailwaysDbContext(DbContextOptions options) : base(options)
+        public RailwaysDbContext(DbContextOptions<RailwaysDbContext> options) : base(options)
         {
             
         }

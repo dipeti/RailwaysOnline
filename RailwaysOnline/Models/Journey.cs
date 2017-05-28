@@ -53,5 +53,9 @@ namespace RailwaysOnline.Models
             return String.Empty;
         }
 
+        public override string ToString()
+        {
+            return $"From: {FromCity} | To: {ToCity} | DepartureTime: {DepartureTime} | Arrival Time: {ArrivalTime}";
+        }
     }
 }

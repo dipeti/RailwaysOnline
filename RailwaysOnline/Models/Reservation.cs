@@ -17,6 +17,7 @@ namespace RailwaysOnline.Models
         public int Seats { get; set; }
 
         public decimal Price => Class == Classes.Economy ? Journey.Price * Seats : Journey.PriceBusinessClass * Seats;
+        public User User { get; set; }
 
         public void AddSeats(int quantity)
         {
@@ -39,6 +40,11 @@ namespace RailwaysOnline.Models
             {
                 Journey.BusinessSeats += Seats;
             }
+        }
+
+        public override string ToString()
+        {
+            return $"{Journey} | Class: {Class} | Seats: {Seats} pcs | Price: {Price:C0}";
         }
     }
 }
