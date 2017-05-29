@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v1.1",
-    "signature": "43e12cfa5837fd59a1ffa07bccef350374a8a8d4"
+    "signature": "7d02744a70ee1d93d93776fecd9ea8f4c177c186"
   },
   "compilationOptions": {},
   "targets": {
@@ -1262,6 +1262,15 @@
           }
         }
       },
+      "sendgrid/9.4.1": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "1.1.2",
+          "Newtonsoft.Json": "9.0.1"
+        },
+        "runtime": {
+          "lib/netstandard1.3/SendGrid.dll": {}
+        }
+      },
       "system.collections.nongeneric/4.3.0": {
         "runtime": {
           "lib/netstandard1.3/System.Collections.NonGeneric.dll": {}
@@ -1482,6 +1491,7 @@
           "Microsoft.AspNetCore.Http.Extensions": "1.1.2",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.1.2",
           "Microsoft.AspNetCore.Mvc": "1.1.2",
+          "Microsoft.AspNetCore.Server.Kestrel": "1.1.2",
           "Microsoft.AspNetCore.Session": "1.1.2",
           "Microsoft.AspNetCore.StaticFiles": "1.1.2",
           "Microsoft.EntityFrameworkCore": "1.1.2",
@@ -1491,7 +1501,8 @@
           "Microsoft.EntityFrameworkCore.Tools": "1.1.1",
           "Microsoft.Extensions.Logging.Debug": "1.1.1",
           "Microsoft.VisualStudio.Web.BrowserLink": "1.1.2",
-          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "1.1.0"
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "1.1.0",
+          "Sendgrid": "9.4.1"
         },
         "runtime": {
           "RailwaysOnline.dll": {}
@@ -2274,6 +2285,13 @@
       "sha512": "sha512-4cXRTIcttvIreAoqK/5hzTtzepeggac+m5A0rzH+9zLtnFh2J0rLuGeJR4KjNLyKqPzO0kjqrs5lkRJEKX8HAA==",
       "path": "runtime.win7-x86.runtime.native.system.data.sqlclient.sni/4.3.0",
       "hashPath": "runtime.win7-x86.runtime.native.system.data.sqlclient.sni.4.3.0.nupkg.sha512"
+    },
+    "sendgrid/9.4.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+CZo902nUjmKbfXNA7WhD45y/saC1CzGhds6pY2TF19wdwJaz1SWT3O2bXhZVp2KiZ8U3/NaNn87zL3bPL17nA==",
+      "path": "sendgrid/9.4.1",
+      "hashPath": "sendgrid.9.4.1.nupkg.sha512"
     },
     "system.collections.nongeneric/4.3.0": {
       "type": "package",

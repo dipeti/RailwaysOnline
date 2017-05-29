@@ -10,6 +10,11 @@
         <input asp-for="Name" class="form-control" />
     </div>
     <div class="form-group">
+        <label asp-for="Languages">Language: </label>
+        <select class="form-control" asp-for="Languages" asp-items="@new SelectList(Enum.GetNames(typeof(Languages)))">
+        </select>
+    </div>
+    <div class="form-group">
         <label asp-for="Email"></label>
         <input asp-for="Email" class="form-control" />
     </div>

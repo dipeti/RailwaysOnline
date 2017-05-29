@@ -63,7 +63,8 @@ namespace RailwaysOnline.Controllers
                 User user = new User()
                 {
                     UserName = model.Name,
-                    Email = model.Email
+                    Email = model.Email,
+                    Language =  model.Languages,
                 };
                 IdentityResult result
                     = await userManager.CreateAsync(user, model.Password);

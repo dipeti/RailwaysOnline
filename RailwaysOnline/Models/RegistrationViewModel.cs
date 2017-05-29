@@ -15,5 +15,7 @@ namespace RailwaysOnline.Models
         [Required]
         [UIHint("Password")]
         public string Password { get; set; }
+        [Required]
+        public Languages Languages { get; set; }
     }
 }

@@ -262,6 +262,7 @@ namespace RailwaysOnline.Data
             if (user == null)
             {
                 user = new User("Admin");
+                user.Language = Languages.en;
                 await userManager.CreateAsync(user, ADMIN_PASSWORD);
             }
         }

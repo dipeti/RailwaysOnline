@@ -12,7 +12,7 @@ namespace RailwaysOnline.Models
     {
         public async void SendNotificationEmail(User user, IEnumerable<Reservation> reservations)
         {
-            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_APIKEY");
+            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("dipeti@live.com", "Peter Dinya");
             var subject = "Your reservation have been saved!";
